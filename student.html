@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student and Class Schedule Information</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        .tab.active {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <!-- Include the SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+    <script src="classScheduleScript.js"></script> <!-- New script file for ClassSchedule tab -->
+</head>
+<body>
+    <h1 id="mainTitle">Active Students and Their Class Schedules</h1>
+
+    <div class="tabs">
+        <div class="tab active" data-day="Monday">Monday</div>
+        <div class="tab" data-day="Tuesday">Tuesday</div>
+        <div class="tab" data-day="Wednesday">Wednesday</div>
+        <div class="tab" data-day="Thursday">Thursday</div>
+        <div class="tab" data-day="Friday">Friday</div>
+        <div class="tab" data-day="Saturday">Saturday</div>
+        <div class="tab" data-day="Sunday">Sunday</div>
+        <div class="tab" data-day="ClassSchedule">Class Schedule</div> <!-- New tab for Class Schedule -->
+    </div>
+
+    <div class="tab-content active" id="Monday">
+        <h2>Monday</h2>
+        <h3>In-person Classes</h3>
+        <table id="MondayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h3>Online Classes</h3>
+        <table id="MondayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Repeat for other days: Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday -->
+    <div class="tab-content" id="Tuesday">
+        <h2>Tuesday</h2>
+        <h3>In-person Classes</h3>
+        <table id="TuesdayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="TuesdayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    
+    <!-- Add similar structures for Wednesday, Thursday, Friday, Saturday, Sunday -->
+    <div class="tab-content" id="Wednesday">
+        <h2>Wednesday</h2>
+        <h3>In-person Classes</h3>
+        <table id="WednesdayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="WednesdayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="Thursday">
+        <h2>Thursday</h2>
+        <h3>In-person Classes</h3>
+        <table id="ThursdayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="ThursdayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="Friday">
+        <h2>Friday</h2>
+        <h3>In-person Classes</h3>
+        <table id="FridayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="FridayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="Saturday">
+        <h2>Saturday</h2>
+        <h3>In-person Classes</h3>
+        <table id="SaturdayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="SaturdayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="tab-content" id="Sunday">
+        <h2>Sunday</h2>
+        <h3>In-person Classes</h3>
+        <table id="SundayTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Online Classes</h3>
+        <table id="SundayOnlineTable">
+            <thead>
+                <tr>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Parent First Name</th>
+                    <th>Parent Last Name</th>
+                    <th>Phone Number 1</th>
+                    <th>Phone Number 2</th>
+                    <th>Email 1</th>
+                    <th>Email 2</th>
+                    <th>Date Enrolled</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="tab-content" id="ClassSchedule">
+        <h2>Class Schedule</h2>
+        <table id="ClassScheduleTable">
+            <thead>
+                <tr>
+                    <!-- Table headers will be added dynamically in the script -->
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>
